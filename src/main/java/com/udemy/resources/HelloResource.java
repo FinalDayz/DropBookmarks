@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 public class HelloResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getGreeting() {
+    public String getGreeting(Object id) {
         return "Hello world";
     }
 }
