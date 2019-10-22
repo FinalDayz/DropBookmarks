@@ -2,7 +2,10 @@ package com.udemy;
 
 import com.udemy.core.User;
 import com.udemy.dropbookmarks.auth.HelloAuthenticator;
+import com.udemy.persistence.ExperimentDAO;
+import com.udemy.resources.ExperimentResource;
 import com.udemy.resources.HelloResource;
+import com.udemy.service.ExperimentService;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthFactory;
 import io.dropwizard.auth.basic.BasicAuthFactory;
@@ -30,7 +33,7 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
                     final Environment environment) {
         // TODO: implement application
         environment.jersey().register(
-                new HelloResource()
+                new ExperimentResource(new ExperimentService(new ExperimentDAO()))
         );
         environment.jersey().register(
                 AuthFactory.binder(

@@ -20,7 +20,7 @@ public class ExperimentDAO {
         testExperiment1.setWijziging_datum("2019-10-21");
 
         Experiment testExperiment2 = new Experiment();
-        testExperiment1.setExperimentId(0);
+        testExperiment1.setExperimentId(1);
         testExperiment1.setExperiment_leider("Michiel");
         testExperiment1.setFase("Lab uit");
         testExperiment1.setWijziging_datum("2019-09-12");
