@@ -1,16 +1,12 @@
 package com.udemy.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 import java.security.Principal;
 
 import io.dropwizard.validation.OneOf;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
-
 
 public class Experiment implements Principal {
 
