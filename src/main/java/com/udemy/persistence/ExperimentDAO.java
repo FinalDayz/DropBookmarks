@@ -1,6 +1,7 @@
 package com.udemy.persistence;
 
 import com.udemy.model.Experiment;
+import org.jdbi.v3.core.Jdbi;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
@@ -10,8 +11,10 @@ import java.util.List;
 public class ExperimentDAO {
 
     private final List<Experiment> experiments;
+    private final Jdbi database;
 
-    public ExperimentDAO() {
+    public ExperimentDAO(Jdbi jdbi) {
+        this.database = jdbi;
 
         Experiment testExperiment1 = new Experiment();
         testExperiment1.setExperimentId(0);
