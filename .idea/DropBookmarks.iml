@@ -88,5 +88,6 @@
     <orderEntry type="library" name="Maven: net.sourceforge.argparse4j:argparse4j:0.4.4" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-auth:0.8.2" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.36" level="project" />
   </component>
 </module>
