@@ -6,7 +6,7 @@ import com.udemy.persistence.ExperimentDAO;
 import javax.inject.Inject;
 import java.util.Collection;
 
-public class ExperimentService extends BaseService<Experiment>{
+public class ExperimentService extends BaseService<Experiment> {
     private final ExperimentDAO dao;
 
     @Inject
