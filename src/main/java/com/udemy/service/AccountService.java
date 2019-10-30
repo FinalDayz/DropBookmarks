@@ -34,8 +34,8 @@ public class AccountService  extends BaseService<Account>{
         dao.delete(id);
     }
 
-    public Account findName(String name) {
-        return dao.findName(name);
+    public String findRol(String name) {
+        return dao.findRol(name);
     }
 
     public boolean isValidLogin(String name, String email) {
