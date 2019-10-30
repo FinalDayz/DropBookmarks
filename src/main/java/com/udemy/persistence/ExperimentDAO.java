@@ -1,75 +1,40 @@
 package com.udemy.persistence;
 
 import com.udemy.model.Experiment;
-import org.jdbi.v3.core.Jdbi;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLInsert;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 import javax.inject.Singleton;
-import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class ExperimentDAO {
+public interface ExperimentDAO {
 
-    private final List<Experiment> experiments;
-    private final Jdbi database;
+    public List<Experiment> getAll();
 
-    public ExperimentDAO(Jdbi jdbi) {
-        this.database = jdbi;
+    @SqlQuery("SELECT * FROM experiment WHERE experiment_ID = :id")
+    @Mapper(ExperimentMapper.class)
+    public Experiment find(@Bind("id") int id);
 
-        Experiment testExperiment1 = new Experiment();
-        testExperiment1.setExperimentId(0);
-        testExperiment1.setExperiment_leider("Henk");
-        testExperiment1.setFase("Lab in");
-        testExperiment1.setWijziging_datum("2019-10-21");
+    @SqlUpdate("DELETE FROM experiment WHERE experiment_ID = :id")
+    public void delete(@Bind("id")int id);
 
-        Experiment testExperiment2 = new Experiment();
-        testExperiment1.setExperimentId(1);
-        testExperiment1.setExperiment_leider("Michiel");
-        testExperiment1.setFase("Lab uit");
-        testExperiment1.setWijziging_datum("2019-09-12");
+    @SqlUpdate("INSERT INTO experiment (experiment_naam, wijziging_datum, fase, experiment_leider) " +
+            "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider)")
+    public void add(@BindBean Experiment newExperiment);
 
-        experiments = new ArrayList<>();
-        experiments.add(testExperiment1);
-        experiments.add(testExperiment2);
-    }
-
-    public List<Experiment> getAll() {
-        return this.experiments;
-    }
-
-    public Experiment find(int id) {
-        /* EXECUTE QUERY */
-        for (Experiment experiment : this.experiments) {
-            if (experiment.getExperimentId() == id) {
-                return experiment;
-            }
-        }
-        return null;
-    }
-
-    public void delete(int id) {
-        /* EXECUTE QUERY */
-        for (Experiment experiment : this.experiments) {
-            if (experiment.getExperimentId() == id) {
-                experiments.remove(experiment);
-                return;
-            }
-        }
-    }
-
-    public void add(Experiment newExperiment) {
-        /* EXECUTE QUERY */
-        this.experiments.add(newExperiment);
-    }
-
-    public void update(int id, Experiment updatedExperiment) {
-        /* EXECUTE QUERY */
-        for (Experiment experiment : this.experiments) {
-            if (experiment.getExperimentId() == id) {
-                experiments.set(experiments.indexOf(experiment), updatedExperiment);
-                return;
-            }
-        }
-    }
-
+    @SqlUpdate("UPDATE experiment (" +
+            "experiment_naam = :experiment_naam" +
+            ", wijziging_datum = :wijziging_datum," +
+            "fase = :fase," +
+            "experiment_leider = :experiment_leider) " +
+            "VALUES (, :fase, :experiment_leider" +
+            ") WHERE experiment_ID = :experimentId")
+    public void update(int id, Experiment updatedExperiment);
 }

@@ -2,16 +2,21 @@ package com.udemy.service;
 
 import com.udemy.model.Experiment;
 import com.udemy.persistence.ExperimentDAO;
+import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
 import java.util.Collection;
 
 public class ExperimentService extends BaseService<Experiment> {
+
     private final ExperimentDAO dao;
+    private final DBI database;
 
     @Inject
-    public ExperimentService(ExperimentDAO experimentDAO) {
-        this.dao = experimentDAO;
+    public ExperimentService(DBI jdbi) {
+        this.database = jdbi;
+        dao = this.database.onDemand(ExperimentDAO.class);
+
     }
 
     public Collection<Experiment> getAll() {

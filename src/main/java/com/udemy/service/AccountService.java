@@ -2,6 +2,8 @@ package com.udemy.service;
 
 import com.udemy.model.Account;
 import com.udemy.persistence.AccountDAO;
+import com.udemy.persistence.ExperimentDAO;
+import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
 import java.util.Collection;
@@ -9,17 +11,15 @@ import java.util.Collection;
 public class AccountService  extends BaseService<Account>{
     private final AccountDAO dao;
 
+    private final DBI database;
     @Inject
-    public AccountService(AccountDAO accountDAO) {
-        this.dao = accountDAO;
+    public AccountService(DBI jdbi) {
+        this.database = jdbi;
+        dao = this.database.onDemand(AccountDAO.class);
     }
 
     public Collection<Account> getAll() {
         return dao.getAll();
-    }
-
-    public Account find(int id) {
-        return requireResult(dao.find(id));
     }
 
     public void add(Account account) {
@@ -39,6 +39,6 @@ public class AccountService  extends BaseService<Account>{
     }
 
     public boolean isValidLogin(String name, String email) {
-        return dao.isValidLogin(name, email);
+        return dao.isValidLogin(name, email) != 0;
     }
 }

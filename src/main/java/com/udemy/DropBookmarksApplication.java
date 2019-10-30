@@ -2,21 +2,23 @@ package com.udemy;
 
 import com.udemy.core.User;
 import com.udemy.dropbookmarks.auth.HelloAuthenticator;
-import com.udemy.model.Experiment;
 import com.udemy.persistence.ExperimentDAO;
+import com.udemy.resources.AccountResource;
 import com.udemy.resources.ExperimentResource;
+import com.udemy.service.AccountService;
 import com.udemy.service.ExperimentService;
 import io.dropwizard.Application;
-import io.dropwizard.auth.AuthFactory;
-import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.hibernate.HibernateBundle;
-import io.dropwizard.jdbi3.JdbiFactory;
+import io.dropwizard.db.PooledDataSourceFactory;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.jdbi.v3.core.Jdbi;
-import ru.vyarus.dropwizard.guice.GuiceBundle;
+import org.skife.jdbi.v2.DBI;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DropBookmarksApplication extends Application<DropBookmarksConfiguration> {
 
@@ -40,12 +42,12 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
 
     @Override
     public void initialize(final Bootstrap<DropBookmarksConfiguration> bootstrap) {
-//        bootstrap.addBundle(new MigrationsBundle<DropBookmarksConfiguration>() {
-//            @Override
-//            public DataSourceFactory getDataSourceFactory(DropBookmarksConfiguration configuration) {
-//                return configuration.getDataSourceFactory();
-//            }
-//        });
+        bootstrap.addBundle(new MigrationsBundle<DropBookmarksConfiguration>() {
+            @Override
+            public DataSourceFactory getDataSourceFactory(DropBookmarksConfiguration configuration) {
+                return configuration.getDataSourceFactory();
+            }
+        });
     }
 
     @Override
@@ -53,24 +55,35 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
             final DropBookmarksConfiguration configuration,
             final Environment environment
     ) {
+        final DBIFactory factory = new DBIFactory();
+        final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
-        JdbiFactory factory = new JdbiFactory();
-       // System.out.println(configuration.getDataSourceFactory());
-        Jdbi jdbi = null;//factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+
+//        try {
+//            String url = "jdbc:mysql://localhost/iipsen2?useSSL=false&serverTimezone=UTC";
+//            Class.forName ("com.mysql.jdbc.Driver").newInstance ();
+//            Connection conn = DriverManager.getConnection (url, "root", "Steef2009");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        environment.jersey().register(new UserResource(jdbi));
 
         environment.jersey().register(
-                new ExperimentResource(new ExperimentService(new ExperimentDAO(jdbi)))
+                new ExperimentResource(new ExperimentService(jdbi))
         );
-
         environment.jersey().register(
-                AuthFactory.binder(
-                        new BasicAuthFactory<>(
-                                new HelloAuthenticator(),
-                                "SECURITY REALM",
-                                User.class
-                        )
-                )
+                new AccountResource(new AccountService(jdbi))
         );
+//        environment.jersey().register(
+//                AuthFactory.binder(
+//                        new BasicAuthFactory<>(
+//                                new HelloAuthenticator(),
+//                                "SECURITY REALM",
+//                                User.class
+//                        )
+//                )
+//        );
     }
 
 }

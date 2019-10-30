@@ -9,18 +9,17 @@ import javax.validation.constraints.*;
 
 public class DropBookmarksConfiguration extends Configuration {
 
+    @Valid
+    @NotNull
+    private DataSourceFactory database = new DataSourceFactory();
 
-//    @Valid
-//    @NotNull
-//    private DataSourceFactory database = new DataSourceFactory();
-//
-//    @JsonProperty("database")
-//    public void setDataSourceFactory(DataSourceFactory factory) {
-//        this.database = factory;
-//    }
-//
-//    @JsonProperty("database")
-//    public DataSourceFactory getDataSourceFactory() {
-//        return database;
-//    }
+    @JsonProperty("database")
+    public void setDataSourceFactory(DataSourceFactory factory) {
+        this.database = factory;
+    }
+
+    @JsonProperty("database")
+    public DataSourceFactory getDataSourceFactory() {
+        return database;
+    }
 }

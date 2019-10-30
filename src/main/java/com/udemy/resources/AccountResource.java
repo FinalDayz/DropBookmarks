@@ -9,10 +9,7 @@ import com.udemy.service.ExperimentService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
@@ -34,18 +31,25 @@ public class AccountResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{name}/{password}")
     @JsonView(View.Public.class)
-    public Account retrieve(@PathParam("id") int id)
+    public boolean retrieve(@PathParam("name") String name, @PathParam("password") String password)
     {
-        return service.find(id);
+        return service.isValidLogin(name, password);
     }
 
-    @GET
-    @Path("/{name}")
-    @JsonView(View.Public.class)
-    public Account retrieve(@PathParam("name") String name)
-    {
-        return service.findName(name);
+    @POST
+    @Path("/delete/{id}")
+    @Consumes(MediaType.TEXT_PLAIN)
+    public void delete(@PathParam("id") int accountId) {
+        service.delete(accountId);
     }
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insert(Account person) {
+        service.add(person);
+    }
+
 }
