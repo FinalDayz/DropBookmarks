@@ -7,10 +7,7 @@ import com.udemy.service.ExperimentDetailsService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
@@ -39,5 +36,28 @@ public class ExperimentDetailsResource {
     {
         return service.find(id);
     }
-    
+
+    @POST
+    @Path("/delete/{id}")
+    @JsonView(View.Public.class)
+    public void delete(@PathParam("id") int id)
+    {
+        service.delete(id);
+    }
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void create(ExperimentDetails experimentDetails)
+    {
+        service.add(experimentDetails);
+    }
+
+    @POST
+    @Path("/update/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(@PathParam("id") int id, ExperimentDetails experimentDetails)
+    {
+        service.update(id, experimentDetails);
+    }
 }

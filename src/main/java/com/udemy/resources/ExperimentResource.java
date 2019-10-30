@@ -3,6 +3,7 @@ package com.udemy.resources;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.udemy.View;
 import com.udemy.model.Experiment;
+import com.udemy.model.ExperimentDetails;
 import com.udemy.service.ExperimentService;
 
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ public class ExperimentResource {
         return service.find(id);
     }
 
-    @GET
+    @POST
     @Path("/delete/{id}")
     @JsonView(View.Public.class)
     public void delete(@PathParam("id") int id)
@@ -45,12 +46,19 @@ public class ExperimentResource {
         service.delete(id);
     }
 
-    @GET
-    @Path("/insert/{id}")
-    @JsonView(View.Public.class)
-    public void insert(@PathParam("id") int id)
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insert(Experiment experiment)
     {
-        service.delete(id);
+        service.add(experiment);
     }
 
+    @POST
+    @Path("/update/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(@PathParam("id") int id, Experiment experiment)
+    {
+        service.update(id, experiment);
+    }
 }
