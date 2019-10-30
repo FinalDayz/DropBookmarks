@@ -4,7 +4,7 @@ database:
   # the username
   user: root
   # the password
-  password: Steef2009
+  password:
   # the JDBC URL; the database is called DWGettingStarted
   url: jdbc:mysql://localhost/om iipsen2?serverTimezone=UTC&useSSL=false
   validationQuery: "/* MyService Health Check */ SELECT 1"
