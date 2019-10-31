@@ -2,6 +2,7 @@ package com.udemy.persistence;
 
 import com.udemy.model.Account;
 import com.udemy.model.Experiment;
+import com.udemy.resources.AccountUserMapper;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -10,6 +11,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Singleton
@@ -42,4 +44,7 @@ public interface AccountDAO {
             ")")
     public void update(int id, Account updatedAccount);
 
+    @SqlQuery("SELECT account_naam, account_rol, account_id FROM account")
+    @Mapper (AccountUserMapper.class)
+    Collection<Account> getUsers();
 }

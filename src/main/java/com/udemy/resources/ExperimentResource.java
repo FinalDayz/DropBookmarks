@@ -39,6 +39,9 @@ public class ExperimentResource {
         return service.find(id);
     }
 
+
+
+
     @POST
     @Path("/delete/{id}")
     @JsonView(View.Public.class)

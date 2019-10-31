@@ -59,4 +59,11 @@ public class AccountResource {
         service.add(person);
     }
 
+    @GET
+    @Path("/users/accountId/accountRol")
+    @JsonView(View.Public.class)
+    public Collection<Account> retrieveUsers() {
+        return service.getUsers ();
+    }
+
 }
