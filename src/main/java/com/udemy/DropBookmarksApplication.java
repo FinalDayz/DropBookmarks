@@ -59,15 +59,6 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
 
-//        try {
-//            String url = "jdbc:mysql://localhost/iipsen2?useSSL=false&serverTimezone=UTC";
-//            Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-//            Connection conn = DriverManager.getConnection (url, "root", "Steef2009");
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        environment.jersey().register(new UserResource(jdbi));
 
         environment.jersey().register(
                 new ExperimentResource(new ExperimentService(jdbi))
