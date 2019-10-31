@@ -15,6 +15,84 @@ public interface ExperimentDAO {
 
     public List<Experiment> getAll();
 
+
+
+
+    //--------------------Order BY--------------------
+
+    //ORDER name Asc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_naam DESC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderNameAsc();
+
+    //ORDER name Desc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_naam DESC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderNameDesc();
+
+    //ORDER lieder Asc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider ASC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderLiederAsc();
+
+    //ORDER lieder Desc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider DESC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderLiederDesc();
+
+    //ORDER edited Asc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider ASC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderEditedAsc();
+
+    //ORDER edited Desc
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider DESC;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> orderEditedDesc();
+
+
+    //--------------------FILTERS--------------------
+
+    //Filter Idee
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Idee ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterIdee();
+
+    //Filter lab in
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Lab in ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterLabIn();
+
+    //Filter lab uit
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Lab uit ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterLabUit();
+
+    //Filter status_kleur Groen
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Groen ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterGreen();
+
+    //Filter status_kleur Oranje
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Oranje ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterOrange();
+
+    //Filter status_kleur Rood
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Rood ;")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterRed();
+
+    //Filter search bar
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase, experiment_ID, status_kleur, wijziging_datum FROM experiment WHERE experiment_naam LIKE '% :searchString %' OR experiment_leider LIKE '% :searchString %';")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterSearch(@Bind("searchString")String searchString);
+
+
+
+
+
+
     @SqlQuery("SELECT * FROM experiment WHERE experiment_ID = :id")
     @Mapper(ExperimentMapper.class)
     public Experiment find(@Bind("id") int id);

@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
+import java.util.List;
 
 @Singleton
 @Path("/experimenten")
@@ -61,4 +62,98 @@ public class ExperimentResource {
     {
         service.update(id, experiment);
     }
+
+
+    //--------------------Order BY--------------------
+
+    @GET
+    @Path("/oderNameAsc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderNameAsc(){
+        return service.orderNameAsc();
+    }
+
+    @GET
+    @Path("/oderNameDesc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderNameDesc(){
+        return service.orderNameDesc();
+    }
+
+    @GET
+    @Path("/orderLiederAsc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderLiederAsc(){
+        return service.orderLiederAsc();
+    }
+
+    @GET
+    @Path("/orderLiederDesc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderLiederDesc(){
+        return service.orderLiederDesc();
+    }
+
+    @GET
+    @Path("/orderEditedAsc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderEditedAsc(){
+        return service.orderEditedAsc();
+    }
+
+    @GET
+    @Path("/orderEditedDesc")
+    @JsonView(View.Public.class)
+    public List<Experiment> orderEditedDesc(){
+        return service.orderEditedDesc();
+    }
+
+    //--------------------FILTERS--------------------
+
+    @GET
+    @Path("/filterIdee")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterIdee(){
+        return service.filterIdee();
+    }
+
+    @GET
+    @Path("/filterLabIn")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterLabIn(){
+        return service.filterLabIn();
+    }
+
+    @GET
+    @Path("/filterLabUit")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterLabUit(){
+        return service.filterLabUit();
+    }
+
+    @GET
+    @Path("/filterGreen")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterGreen(){
+        return service.filterGreen();
+    }
+
+    @GET
+    @Path("/filterOrange")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterOrange(){
+        return service.filterOrange();
+    }
+
+    @GET
+    @Path("/filterRed")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterRed(){
+        return service.filterRed();
+    }
+
+
+
+
+
 }

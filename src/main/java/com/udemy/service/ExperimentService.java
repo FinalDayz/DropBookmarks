@@ -6,6 +6,7 @@ import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.List;
 
 public class ExperimentService extends BaseService<Experiment> {
 
@@ -38,5 +39,64 @@ public class ExperimentService extends BaseService<Experiment> {
     public void delete(int id) {
         dao.delete(id);
     }
+
+    public List<Experiment> orderNameAsc(){
+        return dao.orderNameAsc();
+    }
+
+    public List<Experiment> orderNameDesc(){
+        return dao.orderNameDesc();
+    }
+
+    public List<Experiment> orderLiederAsc(){
+        return dao.orderLiederAsc();
+    }
+
+    public List<Experiment> orderLiederDesc(){
+        return dao.orderLiederDesc();
+    }
+
+    public List<Experiment> orderEditedAsc(){
+        return dao.orderEditedAsc();
+    }
+
+    public List<Experiment> orderEditedDesc(){
+        return dao.orderEditedDesc();
+    }
+
+    //--------------------FILTERS--------------------
+
+    public List<Experiment> filterIdee(){
+        return dao.filterIdee();
+    }
+
+    public List<Experiment> filterLabIn(){
+        return dao.filterLabIn();
+    }
+
+    public List<Experiment> filterLabUit(){
+        return dao.filterLabUit();
+    }
+
+    public List<Experiment> filterGreen(){
+        return dao.filterGreen();
+    }
+
+    public List<Experiment> filterOrange(){
+        return dao.filterOrange();
+    }
+
+    public List<Experiment> filterRed(){
+        return dao.filterRed();
+    }
+
+    public List<Experiment> filterSearch(String searchString){
+        return dao.filterSearch(searchString);
+
+    }
+
+
+
+
 
 }
