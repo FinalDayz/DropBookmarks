@@ -3,9 +3,8 @@ package com.udemy.resources;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.udemy.View;
 import com.udemy.model.Account;
-import com.udemy.model.Experiment;
 import com.udemy.service.AccountService;
-import com.udemy.service.ExperimentService;
+
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,6 +35,14 @@ public class AccountResource {
     public boolean retrieve(@PathParam("name") String name, @PathParam("password") String password)
     {
         return service.isValidLogin(name, password);
+    }
+
+    @GET
+    @Path("/{name}")
+    @JsonView(View.Public.class)
+    public String retrieve(@PathParam("name") String name)
+    {
+        return service.findRol(name);
     }
 
     @POST

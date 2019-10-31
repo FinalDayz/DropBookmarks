@@ -15,9 +15,8 @@ import java.util.List;
 @Singleton
 public interface AccountDAO {
 
-    @SqlQuery("SELECT * FROM account WHERE account_naam = :name")
-    @Mapper(AccountMapper.class)
-    public Account findName(@Bind("name") String name);
+    @SqlQuery("SELECT account_rol FROM account WHERE account_naam = :name")
+    public String findRol(@Bind("name") String name);
 
     @SqlQuery("SELECT count(*) FROM account WHERE account_naam = :name AND account_wachtwoord = :password")
     public int isValidLogin(@Bind("name")String name, @Bind("password") String password);
