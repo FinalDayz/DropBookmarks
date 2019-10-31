@@ -41,4 +41,8 @@ public class AccountService  extends BaseService<Account>{
     public boolean isValidLogin(String name, String email) {
         return dao.isValidLogin(name, email) != 0;
     }
+
+    public Collection<Account> getUsers() {
+        return dao.getUsers();
+    }
 }
