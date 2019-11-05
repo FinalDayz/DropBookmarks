@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotNull;
 import java.security.Principal;
 
-public class ExperimentDetails implements Principal {
+public class ExperimentDetails {
 
     @NotNull
     private int experimentId;
@@ -39,11 +39,6 @@ public class ExperimentDetails implements Principal {
 
     @OneOf(value = {"Hof", "GY"})
     private String archiefType;
-
-    @Override
-    public String getName() {
-        return null;
-    }
 
 
     public String getNetwerk() {
