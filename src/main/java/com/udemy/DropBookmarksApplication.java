@@ -3,9 +3,12 @@ package com.udemy;
 import com.udemy.core.User;
 import com.udemy.dropbookmarks.auth.HelloAuthenticator;
 import com.udemy.persistence.ExperimentDAO;
+import com.udemy.persistence.ExperimentDetailsDAO;
 import com.udemy.resources.AccountResource;
+import com.udemy.resources.ExperimentDetailsResource;
 import com.udemy.resources.ExperimentResource;
 import com.udemy.service.AccountService;
+import com.udemy.service.ExperimentDetailsService;
 import com.udemy.service.ExperimentService;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -66,6 +69,11 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         environment.jersey().register(
                 new AccountResource(new AccountService(jdbi))
         );
+        environment.jersey().register(
+                new ExperimentDetailsResource(new ExperimentDetailsService(new ExperimentDetailsDAO()))
+        );
+
+
 //        environment.jersey().register(
 //                AuthFactory.binder(
 //                        new BasicAuthFactory<>(
