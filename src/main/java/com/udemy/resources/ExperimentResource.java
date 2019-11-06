@@ -70,14 +70,14 @@ public class ExperimentResource {
     //--------------------Order BY--------------------
 
     @GET
-    @Path("/oderNameAsc")
+    @Path("/orderNameAsc")
     @JsonView(View.Public.class)
     public List<Experiment> orderNameAsc(){
         return service.orderNameAsc();
     }
 
     @GET
-    @Path("/oderNameDesc")
+    @Path("/orderNameDesc")
     @JsonView(View.Public.class)
     public List<Experiment> orderNameDesc(){
         return service.orderNameDesc();
@@ -154,6 +154,14 @@ public class ExperimentResource {
     public List<Experiment> filterRed(){
         return service.filterRed();
     }
+
+    @GET
+    @Path("/filterSearch/{searchString}")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterSearch(@PathParam("searchString") String searchString){
+        return service.filterSearch(searchString);
+    }
+
 
 
 

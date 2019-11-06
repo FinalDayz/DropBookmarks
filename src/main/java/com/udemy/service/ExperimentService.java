@@ -40,6 +40,8 @@ public class ExperimentService extends BaseService<Experiment> {
         dao.delete(id);
     }
 
+    //--------------------ORDER BY--------------------
+
     public List<Experiment> orderNameAsc(){
         return dao.orderNameAsc();
     }
@@ -91,11 +93,10 @@ public class ExperimentService extends BaseService<Experiment> {
     }
 
     public List<Experiment> filterSearch(String searchString){
+        searchString = "%" + searchString + "%";
         return dao.filterSearch(searchString);
 
     }
-
-
 
 
 
