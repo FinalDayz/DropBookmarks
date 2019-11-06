@@ -1,15 +1,18 @@
 package com.udemy;
 
 import com.udemy.core.User;
-import com.udemy.dropbookmarks.auth.HelloAuthenticator;
-import com.udemy.persistence.ExperimentDAO;
+import com.udemy.dropbookmarks.auth.BasicAuthenticator;
+import com.udemy.model.Account;
 import com.udemy.resources.AccountResource;
+import com.udemy.resources.ExperimentDetailsResource;
 import com.udemy.resources.ExperimentResource;
 import com.udemy.service.AccountService;
+import com.udemy.service.ExperimentDetailsService;
 import com.udemy.service.ExperimentService;
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthFactory;
+import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -58,13 +61,14 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
-
-
         environment.jersey().register(
                 new ExperimentResource(new ExperimentService(jdbi))
         );
         environment.jersey().register(
                 new AccountResource(new AccountService(jdbi))
+        );
+        environment.jersey().register(
+                new ExperimentDetailsResource(new ExperimentDetailsService(jdbi))
         );
 //        environment.jersey().register(
 //                AuthFactory.binder(
