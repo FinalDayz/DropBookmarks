@@ -1,8 +1,9 @@
 package com.udemy;
 
 import com.udemy.core.User;
-import com.udemy.dropbookmarks.auth.BasicAuthenticator;
-import com.udemy.model.Account;
+import com.udemy.dropbookmarks.auth.HelloAuthenticator;
+import com.udemy.persistence.ExperimentDAO;
+import com.udemy.persistence.ExperimentDetailsDAO;
 import com.udemy.resources.AccountResource;
 import com.udemy.resources.ExperimentDetailsResource;
 import com.udemy.resources.ExperimentResource;
@@ -60,6 +61,8 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
     ) {
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+
+
 
         environment.jersey().register(
                 new ExperimentResource(new ExperimentService(jdbi))

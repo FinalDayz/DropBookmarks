@@ -1,5 +1,6 @@
 package com.udemy.persistence;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import com.udemy.model.Experiment;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
@@ -8,6 +9,7 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 import javax.inject.Singleton;
+import java.sql.SQLOutput;
 import java.util.List;
 
 @Singleton
@@ -84,9 +86,10 @@ public interface ExperimentDAO {
     public List<Experiment> filterRed();
 
     //Filter search bar
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase, experiment_ID, status_kleur, wijziging_datum FROM experiment WHERE experiment_naam LIKE '% :searchString %' OR experiment_leider LIKE '% :searchString %';")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase, experiment_ID, status_kleur, wijziging_datum FROM experiment WHERE experiment_naam LIKE :searchString OR experiment_leider LIKE :searchString;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterSearch(@Bind("searchString")String searchString);
+
 
 
 
