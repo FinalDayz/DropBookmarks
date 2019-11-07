@@ -40,8 +40,6 @@ public class ExperimentResource {
     }
 
 
-
-
     @POST
     @Path("/delete/{id}")
     @JsonView(View.Public.class)
@@ -153,6 +151,20 @@ public class ExperimentResource {
     @JsonView(View.Public.class)
     public List<Experiment> filterRed(){
         return service.filterRed();
+    }
+
+    @GET
+    @Path("/filterHoF")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterHoF(){
+        return service.filterHoF();
+    }
+
+    @GET
+    @Path("/filterGY")
+    @JsonView(View.Public.class)
+    public List<Experiment> filterGY(){
+        return service.filterGY();
     }
 
     @GET

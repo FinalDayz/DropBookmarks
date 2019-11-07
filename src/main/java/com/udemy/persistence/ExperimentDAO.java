@@ -56,34 +56,46 @@ public interface ExperimentDAO {
     //--------------------FILTERS--------------------
 
     //Filter Idee
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Idee ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = 'Idee' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterIdee();
 
     //Filter lab in
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Lab in ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = 'Lab in' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterLabIn();
 
     //Filter lab uit
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = Lab uit ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE fase = 'Lab uit' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterLabUit();
 
     //Filter status_kleur Groen
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Groen ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = 'Groen' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterGreen();
 
     //Filter status_kleur Oranje
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Oranje ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = 'Oranje' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterOrange();
 
     //Filter status_kleur Rood
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = Rood ;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment WHERE status_kleur = 'Rood' ;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterRed();
+
+    //Filter archive_type HoF
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
+            "WHERE archief_type = 'Hof';")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterHoF();
+
+    //Filter archive_type GY
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
+            "WHERE archief_type = 'GY';")
+    @Mapper(ExperimentMapper.class)
+    public List<Experiment> filterGY();
 
     //Filter search bar
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase, experiment_ID, status_kleur, wijziging_datum FROM experiment WHERE experiment_naam LIKE :searchString OR experiment_leider LIKE :searchString;")
