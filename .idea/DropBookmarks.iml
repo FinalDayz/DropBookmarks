@@ -98,7 +98,7 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-access:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.argparse4j:argparse4j:0.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.3" level="project" />
-    <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-auth:0.7.1" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-auth:0.8.2" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-hibernate:0.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-hibernate4:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.jadira.usertype:usertype.core:3.0.0.GA" level="project" />

@@ -87,7 +87,7 @@ public interface ExperimentDAO {
 
     //Filter archive_type HoF
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
-            "WHERE archief_type = 'Hof';")
+            "WHERE archief_type = 'HoF';")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterHoF();
 

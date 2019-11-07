@@ -1,6 +1,7 @@
 package com.udemy.service;
 
 import com.udemy.model.Experiment;
+import com.udemy.model.Message;
 import com.udemy.persistence.MessageDAO;
 import org.skife.jdbi.v2.DBI;
 
@@ -19,7 +20,10 @@ public class MessageService extends BaseService<Experiment> {
         dao = this.database.onDemand(MessageDAO.class);
     }
 
-    //public void addMessage(String message){dao.addMessage();}
+    public void addMessage(Message message){
+        dao.addMessage(message.getBericht(), message.getExperimentId(), message.getAccountId());
+    dao.updateExperiment(message.getExperimentId());
+    }
 
 //    public void getmessage(){dao.getMessages()}
 
