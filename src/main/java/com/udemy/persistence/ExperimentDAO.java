@@ -119,12 +119,11 @@ public interface ExperimentDAO {
             "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider, :color)")
     public void add(@BindBean Experiment newExperiment);
 
-    @SqlUpdate("UPDATE experiment (" +
-            "experiment_naam = :experiment_naam" +
-            ", wijziging_datum = :wijziging_datum," +
+    @SqlUpdate("UPDATE experiment SET " +
+            "experiment_naam = :experiment_naam," +
+            "wijziging_datum = :wijziging_datum," +
             "fase = :fase," +
-            "experiment_leider = :experiment_leider) " +
-            "VALUES (, :fase, :experiment_leider" +
-            ") WHERE experiment_ID = :experimentId")
-    public void update(int id, Experiment updatedExperiment);
+            "experiment_leider = :experiment_leider " +
+            "WHERE experiment_ID = :id")
+    public void update(@Bind("id") int id, @BindBean Experiment updatedExperiment);
 }

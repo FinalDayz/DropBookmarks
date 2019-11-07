@@ -3,6 +3,7 @@ package com.udemy.persistence;
 import com.udemy.model.Experiment;
 import com.udemy.model.ExperimentDetails;
 import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
@@ -34,7 +35,19 @@ public interface ExperimentDetailsDAO {
 
     public void add(ExperimentDetails newExperimentDetail);
 
-    public void update(int id, ExperimentDetails updatedExperimentDetails);
+    @SqlUpdate("UPDATE `experiment_details` SET "+
+            "`netwerk`=:netwerk," +
+            "`status`=:status," +
+            "`status_kleur`=:statusKleur," +
+            "`kosten_inovatie`=:kostenInovatie," +
+            "`kosten_anders`=:kostenAnders," +
+            "`doorlooptijd`=:doorlooptijd," +
+            "`beschrijving`=:beschrijving," +
+            "`voortgang`=:voortgang," +
+            "`archief`=:archief," +
+            "`archief_type`=:archiefType" +
+            " WHERE experiment_ID = :id")
+    public void update(@Bind("id") int id, @BindBean ExperimentDetails updatedExperimentDetails);
 
     public List<ExperimentDetails> getAll() {
         return this.experimentsDetails;

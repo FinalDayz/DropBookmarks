@@ -14,6 +14,7 @@ import io.dropwizard.auth.AuthFactory;
 import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
+import io.dropwizard.jersey.jackson.JsonProcessingExceptionMapper;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -72,6 +73,8 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         environment.jersey().register(
                 new ExperimentDetailsResource(new ExperimentDetailsService(jdbi))
         );
+
+        environment.jersey().register(new JsonProcessingExceptionMapper(true));
 //        environment.jersey().register(
 //                AuthFactory.binder(
 //                        new BasicAuthFactory<>(

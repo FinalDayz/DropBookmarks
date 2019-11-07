@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.udemy.View;
 import com.udemy.model.Account;
 import com.udemy.service.AccountService;
+import io.dropwizard.auth.Auth;
 
 
 import javax.inject.Inject;
@@ -25,7 +26,7 @@ public class AccountResource {
 
     @GET
     @JsonView(View.Public.class)
-    public Collection<Account> retrieveAll() {
+    public Collection<Account> retrieveAll(@Auth Account account) {
         return service.getAll();
     }
 
