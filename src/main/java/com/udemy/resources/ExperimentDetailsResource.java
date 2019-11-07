@@ -24,12 +24,6 @@ public class ExperimentDetailsResource {
     }
 
     @GET
-    @JsonView(View.Public.class)
-    public Collection<ExperimentDetails> retrieveAll() {
-        return service.getAll();
-    }
-
-    @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
     public ExperimentDetails retrieve(@PathParam("id") int id)
