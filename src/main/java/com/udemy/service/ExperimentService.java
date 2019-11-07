@@ -92,6 +92,14 @@ public class ExperimentService extends BaseService<Experiment> {
         return dao.filterRed();
     }
 
+    public List<Experiment> filterHoF(){
+        return dao.filterHoF();
+    }
+
+    public List<Experiment> filterGY(){
+        return dao.filterGY();
+    }
+
     public List<Experiment> filterSearch(String searchString){
         searchString = "%" + searchString + "%";
         return dao.filterSearch(searchString);

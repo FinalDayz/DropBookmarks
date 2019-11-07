@@ -2,27 +2,22 @@ package com.udemy.persistence;
 
 import com.udemy.model.Experiment;
 import com.udemy.model.ExperimentDetails;
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExperimentDetailsDAO {
+public interface ExperimentDetailsDAO {
 
-    private final List<ExperimentDetails> experimentsDetails;
+    @SqlQuery("SELECT * FROM experiment_details  WHERE experiment_id = :id")
+    @Mapper(ExperimentDetailsMapper.class)
+    public ExperimentDetails find(@Bind("id") int id);
 
-    public ExperimentDetailsDAO() {
-
-        ExperimentDetails experimentDetails1 = new ExperimentDetails();
-        experimentDetails1.setArchief(false);
-        experimentDetails1.setBeschrijving("Bla bla bla beschrijving blabla");
-        experimentDetails1.setDoorlooptijd("Doorlooptijd hierrr");
-        experimentDetails1.setExperimentId(0);
-        experimentDetails1.setKostenAnders("Hier kosten anders");
-        experimentDetails1.setKostenInovatie("Hier kosten innovatie");
-        experimentDetails1.setNetwerk("Netwerkkkkk hierrr");
-        experimentDetails1.setStatusKleur("Groen");
-        experimentDetails1.setVoortgang("Vooruitgang");
-        experimentDetails1.setStatus("Status hierzo");
+    @SqlUpdate("DELETE FROM experiment_details  WHERE experiment_id = :id")
+    public void delete(@Bind("id") int id);
 
         ExperimentDetails experimentDetails2 = new ExperimentDetails();
         experimentDetails2.setArchief(true);
@@ -37,11 +32,9 @@ public class ExperimentDetailsDAO {
         experimentDetails2.setStatusKleur("Rood");
         experimentDetails2.setVoortgang("Het gaat slecht met de gezondheid van de deelnemers");
 
+    public void add(ExperimentDetails newExperimentDetail);
 
-        experimentsDetails = new ArrayList<>();
-        experimentsDetails.add(experimentDetails1);
-        experimentsDetails.add(experimentDetails2);
-    }
+    public void update(int id, ExperimentDetails updatedExperimentDetails);
 
     public List<ExperimentDetails> getAll() {
         return this.experimentsDetails;
