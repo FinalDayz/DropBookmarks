@@ -15,9 +15,10 @@ import java.util.List;
 @Singleton
 public interface ExperimentDAO {
 
+
+    @SqlQuery("SELECT * FROM experiment")
+    @Mapper(ExperimentMapper.class)
     public List<Experiment> getAll();
-
-
 
 
     //--------------------Order BY--------------------
