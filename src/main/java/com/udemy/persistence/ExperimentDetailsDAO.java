@@ -18,7 +18,7 @@ public class ExperimentDetailsDAO {
         experimentDetails1.setDoorlooptijd("Doorlooptijd hierrr");
         experimentDetails1.setExperimentId(0);
         experimentDetails1.setKostenAnders("Hier kosten anders");
-        experimentDetails1.setKostenInovatie("Hier kosten inovatie");
+        experimentDetails1.setKostenInovatie("Hier kosten innovatie");
         experimentDetails1.setNetwerk("Netwerkkkkk hierrr");
         experimentDetails1.setStatusKleur("Groen");
         experimentDetails1.setVoortgang("Vooruitgang");

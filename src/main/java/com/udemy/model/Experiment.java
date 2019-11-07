@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 
+
 public class Experiment implements Principal {
 
     @NotNull
@@ -21,8 +22,12 @@ public class Experiment implements Principal {
     private String wijziging_datum;
 
     @NotNull
-    @OneOf(value = {"Lab in", "Idee", "Lab uit"})
+    @OneOf(value = {"Idee", "Lab in", "Lab uit"})
     private String fase;
+
+    @NotNull
+    @OneOf(value = {"Groen", "Oranje", "Rood"})
+    private String color;
 
     @NotNull
     @Length(max=50)
@@ -32,6 +37,10 @@ public class Experiment implements Principal {
     @JsonIgnore
     public String getName() {
         return null;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public String getExperiment_leider() {
@@ -48,6 +57,9 @@ public class Experiment implements Principal {
 
     public void setFase(String fase) {
         this.fase = fase;
+    }
+    public void setColor(String color){
+        this.color = color;
     }
 
     public String getExperiment_naam() {

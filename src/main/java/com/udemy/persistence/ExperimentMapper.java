@@ -14,6 +14,7 @@ public class ExperimentMapper implements ResultSetMapper<Experiment> {
         mappedExperiment.setExperiment_naam(resultSet.getString("experiment_naam"));
         mappedExperiment.setWijziging_datum(resultSet.getString("wijziging_datum"));
         mappedExperiment.setFase(resultSet.getString("fase"));
+        mappedExperiment.setColor(resultSet.getString("status_kleur"));
         mappedExperiment.setExperiment_leider(resultSet.getString("experiment_leider"));
         mappedExperiment.setExperimentId(resultSet.getInt("experiment_ID"));
         return mappedExperiment;
