@@ -50,10 +50,11 @@ public class ExperimentResource {
 
     @POST
     @Path("/create")
+    @JsonView(View.Public.class)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insert(Experiment experiment)
+    public int insert(Experiment experiment)
     {
-        service.add(experiment);
+        return service.add(experiment);
     }
 
     @POST

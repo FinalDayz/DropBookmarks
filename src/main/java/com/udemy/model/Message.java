@@ -16,12 +16,22 @@ public class Message {
     @NotNull
     private int experimentId;
 
+    private String editorName;
+
     @NotNull
     @Length(max=150)
     private String bericht;
 
     @NotNull
     private String dateTime;
+
+    public String getEditorName() {
+        return editorName;
+    }
+
+    public void setEditorName(String editorName) {
+        this.editorName = editorName;
+    }
 
     public int getMessageId() {
         return messageId;

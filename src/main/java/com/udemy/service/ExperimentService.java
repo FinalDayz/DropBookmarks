@@ -30,8 +30,8 @@ public class ExperimentService extends BaseService<Experiment> {
         return requireResult(dao.find(id));
     }
 
-    public void add(Experiment experiment) {
-        dao.add(experiment);
+    public int add(Experiment experiment) {
+        return dao.add(experiment);
     }
 
     public void update(int id, Experiment experiment) {
