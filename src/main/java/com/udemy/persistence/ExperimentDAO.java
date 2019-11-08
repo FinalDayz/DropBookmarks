@@ -52,6 +52,9 @@ public interface ExperimentDAO {
     @Mapper(ExperimentMapper.class)
     public List<Experiment> orderEditedDesc();
 
+    @SqlQuery( "SELECT LAST_INSERT_ID()")
+    public int getLastID();
+
 
     //--------------------FILTERS--------------------
 
@@ -115,8 +118,8 @@ public interface ExperimentDAO {
     @SqlUpdate("DELETE FROM experiment WHERE experiment_ID = :id")
     public void delete(@Bind("id")int id);
 
-    @SqlUpdate("INSERT INTO experiment (experiment_naam, wijziging_datum, fase, experiment_leider, status_kleur) " +
-            "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider, :color)")
+    @SqlUpdate("INSERT INTO experiment (wijziging_datum, experiment_naam, fase, experiment_leider, status_kleur) " +
+            "VALUES (:wijziging_datum, :experiment_naam, :fase, :experiment_leider, :color)")
     public void add(@BindBean Experiment newExperiment);
 
     @SqlUpdate("UPDATE experiment SET " +
@@ -126,4 +129,6 @@ public interface ExperimentDAO {
             "experiment_leider = :experiment_leider " +
             "WHERE experiment_ID = :id")
     public void update(@Bind("id") int id, @BindBean Experiment updatedExperiment);
+
+
 }

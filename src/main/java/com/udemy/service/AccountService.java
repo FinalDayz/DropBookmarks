@@ -22,7 +22,7 @@ public class AccountService  extends BaseService<Account>{
         return dao.getAll();
     }
 
-    public void add(Account account) {
+    public void     add(Account account) {
         dao.add(account);
     }
 

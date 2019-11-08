@@ -65,7 +65,14 @@ public class ExperimentResource {
     }
 
 
+
     //--------------------Order BY--------------------
+    @GET
+    @Path("/lastID")
+    @JsonView(View.Public.class)
+    public int lastID(){
+        return service.getLastID();
+    }
 
     @GET
     @Path("/orderNameAsc")
@@ -173,6 +180,7 @@ public class ExperimentResource {
     public List<Experiment> filterSearch(@PathParam("searchString") String searchString){
         return service.filterSearch(searchString);
     }
+
 
 
 

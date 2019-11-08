@@ -107,6 +107,9 @@ public class ExperimentService extends BaseService<Experiment> {
         return dao.filterSearch(searchString);
 
     }
+    public int getLastID(){
+        return dao.getLastID();
+    }
 
 
 
