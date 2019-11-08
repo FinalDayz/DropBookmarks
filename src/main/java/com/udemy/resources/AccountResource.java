@@ -46,7 +46,7 @@ public class AccountResource {
         return service.findRol(name);
     }
 
-    @POST
+    @GET
     @Path("/delete/{id}")
     @Consumes(MediaType.TEXT_PLAIN)
     public void delete(@PathParam("id") int accountId) {
