@@ -21,7 +21,11 @@ public interface ExperimentDetailsDAO {
     public void delete(@Bind("id") int id);
 
 
-    public void add(ExperimentDetails newExperimentDetail);
+    @SqlUpdate("INSERT INTO experiment_details  " +
+            "(experiment_ID, netwerk, status, kosten_inovatie, kosten_anders, doorlooptijd, beschrijving, voortgang, archief)" +
+            " VALUES "+
+            "(:experimentId, :netwerk, :status, :kostenInovatie, :kostenAnders, :doorlooptijd, :beschrijving, :voortgang, :archief)")
+    public void add(@BindBean ExperimentDetails newExperimentDetail);
 
     @SqlUpdate("UPDATE `experiment_details` SET "+
             "`netwerk`=:netwerk," +

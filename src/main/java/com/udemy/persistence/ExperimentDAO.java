@@ -116,10 +116,9 @@ public interface ExperimentDAO {
     @SqlUpdate("DELETE FROM experiment WHERE experiment_ID = :id")
     public void delete(@Bind("id")int id);
 
-    @SqlQuery("INSERT INTO experiment (experiment_naam, wijziging_datum, fase, experiment_leider, status_kleur) " +
-            "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider, :color);" +
-            "SELECT LAST_INSERT_ID();")
-    public int add(@BindBean Experiment newExperiment);
+    @SqlUpdate("INSERT INTO experiment (experiment_naam, wijziging_datum, fase, experiment_leider, status_kleur) " +
+            "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider, :color);")
+    public void add(@BindBean Experiment newExperiment);
 
     @SqlUpdate("UPDATE experiment SET " +
             "experiment_naam = :experiment_naam," +
@@ -128,4 +127,7 @@ public interface ExperimentDAO {
             "experiment_leider = :experiment_leider " +
             "WHERE experiment_ID = :id")
     public void update(@Bind("id") int id, @BindBean Experiment updatedExperiment);
+
+    @SqlQuery("SELECT LAST_INSERT_ID();")
+    int lastInsert();
 }
