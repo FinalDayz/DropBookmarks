@@ -23,5 +23,8 @@ public interface MessageDAO {
     @Mapper(ExperimentMapper.class)
     public List<Experiment> getMessages(@Bind("ID")int ID);
 
+    @SqlQuery("SELECT m.*, a.account_naam FROM `message` m join account a on a.account_ID = m.account_ID where m.experiment_ID = :ID;")
+    @Mapper(MessageMapper.class)
+    public List<Experiment> getMessagesFromExperiment(@Bind("ID") int ID);
 
 }

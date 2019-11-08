@@ -15,9 +15,10 @@ import java.util.List;
 @Singleton
 public interface ExperimentDAO {
 
+
+    @SqlQuery("SELECT * FROM experiment")
+    @Mapper(ExperimentMapper.class)
     public List<Experiment> getAll();
-
-
 
 
     //--------------------Order BY--------------------
@@ -118,9 +119,10 @@ public interface ExperimentDAO {
     @SqlUpdate("DELETE FROM experiment WHERE experiment_ID = :id")
     public void delete(@Bind("id")int id);
 
-    @SqlUpdate("INSERT INTO experiment (wijziging_datum, experiment_naam, fase, experiment_leider, status_kleur) " +
-            "VALUES (:wijziging_datum, :experiment_naam, :fase, :experiment_leider, :color)")
-    public void add(@BindBean Experiment newExperiment);
+    @SqlQuery("INSERT INTO experiment (experiment_naam, wijziging_datum, fase, experiment_leider, status_kleur) " +
+            "VALUES (:experiment_naam, :wijziging_datum, :fase, :experiment_leider, :color);" +
+            "SELECT LAST_INSERT_ID();")
+    public int add(@BindBean Experiment newExperiment);
 
     @SqlUpdate("UPDATE experiment SET " +
             "experiment_naam = :experiment_naam," +
@@ -129,6 +131,4 @@ public interface ExperimentDAO {
             "experiment_leider = :experiment_leider " +
             "WHERE experiment_ID = :id")
     public void update(@Bind("id") int id, @BindBean Experiment updatedExperiment);
-
-
 }

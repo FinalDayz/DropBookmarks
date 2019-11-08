@@ -89,4 +89,13 @@ public class Experiment implements Principal {
     public boolean equals(Experiment experiment) {
         return experiment.getExperimentId() == this.getExperimentId();
     }
+
+    public String toString() {
+        return "\nexperimentId:" + experimentId + "\n" +
+         "experiment_naam:" + experiment_naam + "\n" +
+         "wijziging_datum:" + wijziging_datum + "\n" +
+         "fase:" + fase + "\n" +
+         "experiment_leider:" + experiment_leider + "";
+
+    }
 }

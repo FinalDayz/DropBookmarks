@@ -1,14 +1,17 @@
 package com.udemy;
 
 import com.udemy.core.User;
+import com.udemy.model.Message;
 import com.udemy.persistence.ExperimentDAO;
 import com.udemy.persistence.ExperimentDetailsDAO;
 import com.udemy.resources.AccountResource;
 import com.udemy.resources.ExperimentDetailsResource;
 import com.udemy.resources.ExperimentResource;
+import com.udemy.resources.MessageResource;
 import com.udemy.service.AccountService;
 import com.udemy.service.ExperimentDetailsService;
 import com.udemy.service.ExperimentService;
+import com.udemy.service.MessageService;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthFactory;
 import io.dropwizard.auth.basic.BasicAuthFactory;
@@ -62,8 +65,6 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
-
-
         environment.jersey().register(
                 new ExperimentResource(new ExperimentService(jdbi))
         );
@@ -72,6 +73,9 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         );
         environment.jersey().register(
                 new ExperimentDetailsResource(new ExperimentDetailsService(jdbi))
+        );
+        environment.jersey().register(
+                new MessageResource(new MessageService(jdbi))
         );
 
         environment.jersey().register(new JsonProcessingExceptionMapper(true));

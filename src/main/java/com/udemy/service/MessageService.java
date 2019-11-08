@@ -1,6 +1,7 @@
 package com.udemy.service;
 
 import com.udemy.model.Experiment;
+import com.udemy.model.Message;
 import com.udemy.persistence.MessageDAO;
 import org.skife.jdbi.v2.DBI;
 
@@ -28,4 +29,7 @@ public class MessageService extends BaseService<Experiment> {
     }
 
 
+    public List<Experiment> fromExperimenten(int experimentId) {
+        return dao.getMessagesFromExperiment(experimentId);
+    }
 }
