@@ -24,7 +24,7 @@ public interface ExperimentDAO {
     //--------------------Order BY--------------------
 
     //ORDER name Asc
-    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_naam DESC;")
+    @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_naam ASC;")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> orderNameAsc();
 
@@ -88,7 +88,7 @@ public interface ExperimentDAO {
 
     //Filter archive_type HoF
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
-            "WHERE archief_type = 'Hof';")
+            "WHERE archief_type = 'HoF';")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterHoF();
 
