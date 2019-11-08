@@ -1,8 +1,6 @@
 package com.udemy.persistence;
 
 import com.udemy.model.Account;
-import com.udemy.model.Experiment;
-import com.udemy.resources.AccountUserMapper;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -10,7 +8,6 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 import javax.inject.Singleton;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 

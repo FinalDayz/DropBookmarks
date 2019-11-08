@@ -25,6 +25,11 @@ public class BasicAuthenticator implements Authenticator<BasicCredentials, Accou
         dao = this.database.onDemand(AccountDAO.class);
     }
 
+    /**
+     * Checks whether given password and username are correct
+     * @param basicCredentials
+     * @return
+     */
     @Override
     public Optional<Account> authenticate(BasicCredentials basicCredentials) {
         if(dao.isValidLogin(basicCredentials.getUsername(), basicCredentials.getPassword()) != 1) {

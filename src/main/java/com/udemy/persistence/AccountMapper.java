@@ -7,6 +7,7 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
+ * Assigns values from database to an object
  * @author Stefan
  */
 public class AccountMapper implements ResultSetMapper<Account> {

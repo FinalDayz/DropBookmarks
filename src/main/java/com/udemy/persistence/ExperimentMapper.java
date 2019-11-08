@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Assigns values from database to an object
  * @author Stefan
  */
 public class ExperimentMapper implements ResultSetMapper<Experiment> {

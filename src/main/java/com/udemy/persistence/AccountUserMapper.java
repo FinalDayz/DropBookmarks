@@ -1,4 +1,4 @@
-package com.udemy.resources;
+package com.udemy.persistence;
 
 import com.udemy.model.Account;
 import org.skife.jdbi.v2.StatementContext;
