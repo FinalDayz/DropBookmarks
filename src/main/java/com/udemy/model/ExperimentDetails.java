@@ -40,7 +40,7 @@ public class ExperimentDetails {
 
     private boolean archief = false;
 
-    @OneOf(value = {"Hof", "GY"})
+    @OneOf(value = {"HoF", "GY"})
     private String archiefType;
 
 
