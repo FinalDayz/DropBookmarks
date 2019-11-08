@@ -10,7 +10,9 @@ import org.skife.jdbi.v2.DBI;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collection;
-
+/**
+ * @author Stefan
+ */
 @Singleton
 public class ExperimentDetailsService extends BaseService<ExperimentDetails> {
     private final ExperimentDetailsDAO dao;

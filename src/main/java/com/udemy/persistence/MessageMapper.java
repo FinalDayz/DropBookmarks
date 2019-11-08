@@ -8,6 +8,9 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author Stefan
+ */
 public class MessageMapper implements ResultSetMapper<Message> {
     @Override
     public Message map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {

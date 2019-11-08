@@ -8,7 +8,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 
-
+/**
+ * @author Bart
+ */
 public class Experiment implements Principal {
 
     @NotNull

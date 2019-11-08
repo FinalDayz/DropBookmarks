@@ -7,7 +7,9 @@ import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
 import java.util.Collection;
-
+/**
+ * @author Stefan, Guus
+ */
 public class AccountService  extends BaseService<Account>{
     private final AccountDAO dao;
 

@@ -26,17 +26,10 @@ import org.skife.jdbi.v2.DBI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * @author Stefan
+ */
 public class DropBookmarksApplication extends Application<DropBookmarksConfiguration> {
-
-//    private final HibernateBundle<DropBookmarksConfiguration> hibernateBundle =
-//            new HibernateBundle<DropBookmarksConfiguration>(DataSourceFactory.class) {
-//                @Override
-//                public DataSourceFactory getDataSourceFactory(DropBookmarksConfiguration configuration) {
-//                    return configuration.getDataSourceFactory();
-//                }
-//            };
-
 
     public static void main(final String[] args) throws Exception {
         new DropBookmarksApplication().run(args);
@@ -79,15 +72,7 @@ public class DropBookmarksApplication extends Application<DropBookmarksConfigura
         );
 
         environment.jersey().register(new JsonProcessingExceptionMapper(true));
-//        environment.jersey().register(
-//                AuthFactory.binder(
-//                        new BasicAuthFactory<>(
-//                                new BasicAuthenticator(jdbi),
-//                                "SECURITY REALM",
-//                                Account.class
-//                        )
-//                )
-//        );
+
     }
 
 }

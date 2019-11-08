@@ -4,6 +4,9 @@ import io.dropwizard.validation.OneOf;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+/**
+ * @author Stefan
+ */
 
 public class VasteDienst {
 

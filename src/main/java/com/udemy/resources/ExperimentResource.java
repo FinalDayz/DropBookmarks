@@ -13,6 +13,9 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author Stefan, Bart
+ */
 @Singleton
 @Path("/experimenten")
 @Produces(MediaType.APPLICATION_JSON)

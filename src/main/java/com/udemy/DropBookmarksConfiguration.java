@@ -6,7 +6,9 @@ import io.dropwizard.db.DataSourceFactory;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-
+/**
+ * @author Stefan
+ */
 public class DropBookmarksConfiguration extends Configuration {
 
     @Valid

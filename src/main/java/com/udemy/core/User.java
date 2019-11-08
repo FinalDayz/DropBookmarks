@@ -1,4 +1,5 @@
 package com.udemy.core;
-
-public class User {
-}
+/**
+ * @author Stefan
+ */
+public class User {}

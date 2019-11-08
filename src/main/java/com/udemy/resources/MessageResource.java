@@ -13,6 +13,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * @author Stefan, Bart
+ */
 @Singleton
 @Path("/messages")
 @Produces(MediaType.APPLICATION_JSON)

@@ -5,7 +5,9 @@ import com.udemy.persistence.VasteDienstDAO;
 
 import javax.inject.Inject;
 import java.util.Collection;
-
+/**
+ * @author Stefan
+ */
 public class VasteDienstService extends BaseService<VasteDienst> {
     private final VasteDienstDAO dao;
 

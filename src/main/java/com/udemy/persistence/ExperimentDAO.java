@@ -12,6 +12,9 @@ import javax.inject.Singleton;
 import java.sql.SQLOutput;
 import java.util.List;
 
+/**
+ * @author Stefan, Bart, Maarten
+ */
 @Singleton
 public interface ExperimentDAO {
 
@@ -36,12 +39,12 @@ public interface ExperimentDAO {
     //ORDER lieder Asc
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider ASC;")
     @Mapper(ExperimentMapper.class)
-    public List<Experiment> orderLiederAsc();
+    public List<Experiment> orderLeiderAsc();
 
     //ORDER lieder Desc
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider DESC;")
     @Mapper(ExperimentMapper.class)
-    public List<Experiment> orderLiederDesc();
+    public List<Experiment> orderLeiderDesc();
 
     //ORDER edited Asc
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment_ID, status_kleur FROM experiment ORDER BY experiment_leider ASC;")
@@ -89,13 +92,13 @@ public interface ExperimentDAO {
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterRed();
 
-    //Filter archive_type HoF
+    //Filter archive_type Hall of Fame
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
             "WHERE archief_type = 'HoF';")
     @Mapper(ExperimentMapper.class)
     public List<Experiment> filterHoF();
 
-    //Filter archive_type GY
+    //Filter archive_type Graveyard
     @SqlQuery("SELECT experiment_naam, experiment_leider, fase ,wijziging_datum, experiment.experiment_ID, experiment.status_kleur FROM experiment INNER JOIN experiment_details ON experiment.experiment_ID=experiment_details.experiment_ID\n" +
             "WHERE archief_type = 'GY';")
     @Mapper(ExperimentMapper.class)
@@ -131,6 +134,7 @@ public interface ExperimentDAO {
             "WHERE experiment_ID = :id")
     public void update(@Bind("id") int id, @BindBean Experiment updatedExperiment);
 
+    //Select last insert experiment_id
     @SqlQuery("SELECT LAST_INSERT_ID();")
     int lastInsert();
 }

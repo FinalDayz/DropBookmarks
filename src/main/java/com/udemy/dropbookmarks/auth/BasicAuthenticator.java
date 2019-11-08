@@ -10,7 +10,9 @@ import io.dropwizard.auth.basic.BasicCredentials;
 import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
-
+/**
+ * @author Stefan
+ */
 public class BasicAuthenticator implements Authenticator<BasicCredentials, Account> {
 
     private final AccountDAO dao;

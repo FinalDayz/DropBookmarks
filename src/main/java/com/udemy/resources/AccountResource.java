@@ -13,6 +13,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
+/**
+ * @author Stefan, Guus
+ */
 @Singleton
 @Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)

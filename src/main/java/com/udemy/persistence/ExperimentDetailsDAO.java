@@ -11,6 +11,9 @@ import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Stefan
+ */
 public interface ExperimentDetailsDAO {
 
     @SqlQuery("SELECT * FROM experiment_details  WHERE experiment_id = :id")

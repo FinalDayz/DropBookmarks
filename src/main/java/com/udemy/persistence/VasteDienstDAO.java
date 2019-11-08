@@ -6,6 +6,9 @@ import com.udemy.model.VasteDienst;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Stefan
+ */
 public class VasteDienstDAO {
 
     private final List<VasteDienst> vasteDiensten;

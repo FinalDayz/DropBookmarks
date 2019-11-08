@@ -14,6 +14,12 @@ public interface MessageDAO {
 
     public List<Experiment> getAll();
 
+    /**
+     * @author Bart
+     * @param message
+     * @param experimentId
+     * @param accountId
+     */
     @SqlUpdate("INSERT INTO message (account_ID, Bericht, experiment_ID) " +
             "VALUES (:account_ID, :Bericht, :experiment_ID);")
     void addMessage(@Bind("Bericht") String message,

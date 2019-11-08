@@ -13,7 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
-
+/**
+ * @author Stefan
+ */
 @Singleton
 @Path("/vasteDiensten")
 @Produces(MediaType.APPLICATION_JSON)

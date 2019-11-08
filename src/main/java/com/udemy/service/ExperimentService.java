@@ -1,15 +1,16 @@
 package com.udemy.service;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.udemy.model.Experiment;
 import com.udemy.persistence.ExperimentDAO;
-import io.dropwizard.jackson.Jackson;
 import org.skife.jdbi.v2.DBI;
 
 import javax.inject.Inject;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author Stefan, Bart
+ */
 public class ExperimentService extends BaseService<Experiment> {
 
     private final ExperimentDAO dao;
@@ -54,11 +55,11 @@ public class ExperimentService extends BaseService<Experiment> {
     }
 
     public List<Experiment> orderLiederAsc(){
-        return dao.orderLiederAsc();
+        return dao.orderLeiderAsc();
     }
 
     public List<Experiment> orderLiederDesc(){
-        return dao.orderLiederDesc();
+        return dao.orderLeiderDesc();
     }
 
     public List<Experiment> orderEditedAsc(){

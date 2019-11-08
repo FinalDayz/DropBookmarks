@@ -1,7 +1,9 @@
 package com.udemy.service;
 
 import javax.ws.rs.NotFoundException;
-
+/**
+ * @author Stefan
+ */
 public class BaseService<T> {
     public T requireResult(T model)
     {

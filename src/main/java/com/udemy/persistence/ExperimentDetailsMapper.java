@@ -7,6 +7,9 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @Stefan
+ */
 public class ExperimentDetailsMapper implements ResultSetMapper<ExperimentDetails> {
 
     @Override

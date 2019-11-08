@@ -11,6 +11,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
+/**
+ * @author Stefan
+ */
 @Singleton
 @Path("/experimentDetails")
 @Produces(MediaType.APPLICATION_JSON)

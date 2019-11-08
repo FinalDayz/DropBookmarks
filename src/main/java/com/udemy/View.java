@@ -1,5 +1,7 @@
 package com.udemy;
-
+/**
+ * @author Stefan
+ */
 public class View
 {
     public static class Internal extends Private {}

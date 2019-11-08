@@ -6,6 +6,9 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotNull;
 import java.security.Principal;
 
+/**
+ * @author Stefan
+ */
 public class ExperimentDetails {
 
     @NotNull
