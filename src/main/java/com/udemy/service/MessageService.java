@@ -32,4 +32,9 @@ public class MessageService extends BaseService<Experiment> {
     public List<Experiment> fromExperimenten(int experimentId) {
         return dao.getMessagesFromExperiment(experimentId);
     }
+
+    public void addMessage(Message message){
+        dao.addMessage(message.getBericht(), message.getExperimentId(), message.getAccountId());
+        dao.updateExperiment(message.getExperimentId());
+    }
 }

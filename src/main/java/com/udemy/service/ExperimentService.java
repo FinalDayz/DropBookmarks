@@ -31,7 +31,8 @@ public class ExperimentService extends BaseService<Experiment> {
     }
 
     public int add(Experiment experiment) {
-        return dao.add(experiment);
+        dao.add(experiment);
+        return dao.lastInsert();
     }
 
     public void update(int id, Experiment experiment) {

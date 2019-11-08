@@ -15,8 +15,15 @@ public interface MessageDAO {
     public List<Experiment> getAll();
 
     @SqlUpdate("INSERT INTO message (account_ID, Bericht, experiment_ID) " +
-            "VALUES (:account_ID, :Bericht, :experiment_ID)")
-    void addMessage(int experimentId, int accountId, String message);
+            "VALUES (:account_ID, :Bericht, :experiment_ID);")
+    void addMessage(@Bind("Bericht") String message,
+                    @Bind("experiment_ID") int experimentId,
+                    @Bind("account_ID") int accountId);
+
+    @SqlUpdate("UPDATE experiment " +
+            "Set wijziging_datum = CURRENT_TIMESTAMP() " +
+            "WHERE experiment_ID = :experiment_ID;")
+    void updateExperiment(@Bind("experiment_ID") int experimentId);
 
     @SqlQuery("SELECT bericht, date FROM message INNER JOIN experiment ON experiment.experiment_ID=message.experiment_ID\n" +
             "WHERE experiment.experiment_ID = :ID;")

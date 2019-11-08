@@ -9,10 +9,7 @@ import com.udemy.service.MessageService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -34,5 +31,12 @@ public class MessageResource {
     public List<Experiment> retrieve(@PathParam("experimentId") int experimentId)
     {
         return service.fromExperimenten(experimentId);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/addMessage/")
+    public void insert(Message message) {
+        service.addMessage(message);
     }
 }
