@@ -34,7 +34,6 @@ public interface ExperimentDetailsDAO {
     @SqlUpdate("UPDATE `experiment_details` SET "+
             "`netwerk`=:netwerk," +
             "`status`=:status," +
-            "`status_kleur`=:statusKleur," +
             "`kosten_inovatie`=:kostenInovatie," +
             "`kosten_anders`=:kostenAnders," +
             "`doorlooptijd`=:doorlooptijd," +
